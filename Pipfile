@@ -9,6 +9,7 @@ langchain-community = "*"
 pypdf = "*"
 sentence-transformers = "*"
 streamlit = "*"
+langchain-huggingface = "*"
 
 [dev-packages]
 

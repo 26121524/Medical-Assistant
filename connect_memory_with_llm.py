@@ -5,8 +5,9 @@ from langchain.chains import RetrievalQA
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS 
 
+import streamlit as st # type: ignore
 
-HF_TOKEN=os.environ.get("hf_token")
+HF_TOKEN = st.secrets["hf_token"]
 HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3"
 
 

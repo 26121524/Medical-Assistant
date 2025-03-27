@@ -5,6 +5,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEndpoint
+import streamlit as st # type: ignore
 
 DB_FAISS_PATH="vectorstore/db_faiss"
 @st.cache_resource
@@ -57,7 +58,7 @@ def main():
                 """
 
         HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3"
-        HF_TOKEN=os.environ.get("hf_token")
+        HF_TOKEN = st.secrets["hf_token"]
 
         try:
             vectorstore=get_vectorstore()
