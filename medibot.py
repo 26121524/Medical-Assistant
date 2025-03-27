@@ -12,12 +12,7 @@ import torch
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 # Ensure all tensors are on CPU
 device = torch.device("cpu")
-
-from transformers import pipeline
-
-# Load model with CPU (device=-1)
-nlp = pipeline("text-generation", model="sentence-transformers/all-MiniLM-L6-v2", device=-1)
-model.to(device)
+torch.set_default_tensor_type(torch.FloatTensor) 
 
 DB_FAISS_PATH="vectorstore/db_faiss"
 @st.cache_resource

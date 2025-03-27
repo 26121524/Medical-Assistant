@@ -10,7 +10,10 @@ pypdf = "*"
 sentence-transformers = "*"
 streamlit = "*"
 langchain-huggingface = "*"
-
+torch = "*"
+transformers = "*"
+langchain = "*"
+faiss-cpu = "*"
 [dev-packages]
 
 [requires]
