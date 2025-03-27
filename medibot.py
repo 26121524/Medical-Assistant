@@ -1,3 +1,4 @@
+from pyexpat import model
 import streamlit as st # type: ignore
 import os
 from langchain_core.prompts import PromptTemplate
@@ -5,7 +6,16 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEndpoint
-import streamlit as st # type: ignore
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+from transformers import pipeline
+
+# Load the model with CPU
+nlp = pipeline("text-generation", model="sentence-transformers/all-MiniLM-L6-v2", device=-1)  # Set device=-1 for CPU
+
+import torch
+device = torch.device("cpu")  # Force CPU
+model.to(device)
 
 DB_FAISS_PATH="vectorstore/db_faiss"
 @st.cache_resource
