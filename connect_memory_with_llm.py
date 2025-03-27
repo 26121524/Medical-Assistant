@@ -6,7 +6,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS 
 
 
-HF_TOKEN=os.environ.get("HF_TOKEN")
+HF_TOKEN=os.environ.get("hf_token")
 HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3"
 
 
