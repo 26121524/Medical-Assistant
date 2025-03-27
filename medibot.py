@@ -7,14 +7,16 @@ from langchain.chains import RetrievalQA
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEndpoint
 import os
+import torch
+# Force PyTorch to use CPU
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# Ensure all tensors are on CPU
+device = torch.device("cpu")
+
 from transformers import pipeline
 
-# Load the model with CPU
-nlp = pipeline("text-generation", model="sentence-transformers/all-MiniLM-L6-v2", device=-1)  # Set device=-1 for CPU
-
-import torch
-device = torch.device("cpu")  # Force CPU
+# Load model with CPU (device=-1)
+nlp = pipeline("text-generation", model="sentence-transformers/all-MiniLM-L6-v2", device=-1)
 model.to(device)
 
 DB_FAISS_PATH="vectorstore/db_faiss"
