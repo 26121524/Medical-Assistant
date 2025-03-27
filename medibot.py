@@ -9,10 +9,11 @@ from langchain_huggingface import HuggingFaceEndpoint
 import os
 import torch
 # Force PyTorch to use CPU
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
 # Ensure all tensors are on CPU
 device = torch.device("cpu")
 torch.set_default_tensor_type(torch.FloatTensor) 
+print("using device", device)
 
 DB_FAISS_PATH="vectorstore/db_faiss"
 @st.cache_resource
